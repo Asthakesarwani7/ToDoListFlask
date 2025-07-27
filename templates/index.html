@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List </title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1> My To-Do List</h1>
+
+    
+    <form action="/add" method="POST">
+        <input type="text" name="title" placeholder="Enter your task:" required>
+        <button type="submit">Add a new task</button>
+    </form>
+
+    <ul>
+        {% for task in tasks %}
+        <li>
+            {{ task.title }} <small>({{ task.created_at }})</small>
+
+            <a href="/delete/{{ task.id }}">[🗑️]</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
